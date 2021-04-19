@@ -17,4 +17,9 @@ describe("JoiPhoneFormat", () => {
         const { error } = schemaDefault("Vietnam", { phone: "0862334006" });
         expect(error).toBeUndefined();
     });
+
+    it("Pass a default Vietnam's international phone number", () => {
+        const { error } = schemaInternational("Vietnam", { phone: "+84862334006" });
+        expect(error).toBeUndefined();
+    });
 });

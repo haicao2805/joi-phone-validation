@@ -62,7 +62,7 @@ export const JoiPhoneFormat: JoiPhoneFormatExtend = Joi.extend((joi) => {
                 ],
                 validate: (value: string, helpers: Joi.CustomHelpers, args): any => {
                     const regex = new RegExp(ListCountry.get(args["country"]).international);
-                    if (!regex.test(value)) return helpers.error("phone.defaultPhoneFormat", args["country"]);
+                    if (!regex.test(value)) return helpers.error("phone.internationalPhoneFormat", args["country"]);
 
                     return value;
                 },

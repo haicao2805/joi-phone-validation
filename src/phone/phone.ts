@@ -3,7 +3,17 @@ import { ListCountry } from "./listCountry";
 import { CountryCode } from "./countryCode";
 
 interface JoiStringExtend extends Joi.StringSchema {
+      /**
+       * @description Specifies the default phone number format in the country. Return this phone number in the international phone number format
+       * @param countryName The country name in ISO format. For example: Viet Nam(vn), Japan(jp), India(in), United States of America(us)
+       *
+       */
       defaultPhoneFormat(countryName: CountryCode): this;
+
+      /**
+       * @description Specifies the default phone number format in the country.
+       * @param countryName The country name in ISO format. For example: Viet Nam(vn), Japan(jp), India(in), United States of America(us)
+       */
       internationalPhoneFormat(countryName: CountryCode): this;
 }
 

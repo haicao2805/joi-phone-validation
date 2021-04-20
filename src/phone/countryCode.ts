@@ -1,1 +1,1 @@
-export type CountryCode = "vi";
+export type CountryCode = "vn";

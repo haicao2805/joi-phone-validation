@@ -1,5 +1,5 @@
 {
-      "name": "joi-phone-number",
+      "name": "joi-phone-validation",
       "version": "1.0.0",
       "description": "A Joi extension that help to validate a phone number",
       "main": "index.js",

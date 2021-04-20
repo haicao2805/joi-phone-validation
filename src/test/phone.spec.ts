@@ -25,18 +25,42 @@ describe("JoiPhoneFormat", () => {
       });
 
       it("Fail a default Vietnam's phone number", () => {
-            try {
-                  schemaDefault("vi", { phone: "123456789" });
-            } catch (err) {
-                  expect(err).toBeDefined();
-            }
+            const { error } = schemaDefault("vi", { phone: "123456789" });
+            expect(error).toBeDefined();
+      });
+
+      it("Fail a default Vietnam's phone number", () => {
+            const { error } = schemaDefault("vi", { phone: "aaaaa" });
+            expect(error).toBeDefined();
+      });
+
+      it("Fail a default Vietnam's phone number", () => {
+            const { error } = schemaDefault("vi", { phone: "000000000000000" });
+            expect(error).toBeDefined();
       });
 
       it("Fail a default Vietnam's international phone number", () => {
-            try {
-                  schemaInternational("vi", { phone: "+8123456789" });
-            } catch (err) {
-                  expect(err).toBeDefined();
-            }
+            const { error } = schemaInternational("vi", { phone: "+8123456789" });
+            expect(error).toBeDefined();
+      });
+
+      it("Fail a default Vietnam's phone number", () => {
+            const { error } = schemaDefault("vi", { phone: "0862334006a" });
+            expect(error).toBeDefined();
+      });
+
+      it("Fail a default Vietnam's international phone number", () => {
+            const { error } = schemaInternational("vi", { phone: "+8423456789000000" });
+            expect(error).toBeDefined();
+      });
+
+      it("Fail a default Vietnam's international phone number", () => {
+            const { error } = schemaInternational("vi", { phone: "+aaaaaaaaaaaaaaaaaaaa" });
+            expect(error).toBeDefined();
+      });
+
+      it("Fail a default Vietnam's international phone number", () => {
+            const { error } = schemaInternational("vi", { phone: "+84000000000" });
+            expect(error).toBeDefined();
       });
 });

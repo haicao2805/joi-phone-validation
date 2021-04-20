@@ -38,12 +38,12 @@ export const JoiPhoneFormat: JoiPhoneFormatExtend = Joi.extend((joi) => {
                               },
                         ],
                         validate: (value: string, helpers: Joi.CustomHelpers, args): any => {
-                              const regexString = ListCountry.get(args["country"]);
-                              if (!regexString) return helpers.error("phone.defaultPhoneFormat", args["country"]);
-                              const regex = new RegExp(regexString.default);
-                              if (!regex.test(value)) return helpers.error("phone.defaultPhoneFormat", args["country"]);
+                              const regexObject = ListCountry.get(args["country"]);
+                              if (!regexObject) return helpers.error("phone.defaultPhoneFormat", args);
+                              const regex = new RegExp(regexObject.default);
+                              if (!regex.test(value)) return helpers.error("phone.defaultPhoneFormat", args);
 
-                              return value.replace(value.charAt(0), regexString.prefix);
+                              return value.replace(value.charAt(0), regexObject.prefix);
                         },
                   },
                   internationalPhoneFormat: {
@@ -64,10 +64,10 @@ export const JoiPhoneFormat: JoiPhoneFormatExtend = Joi.extend((joi) => {
                               },
                         ],
                         validate: (value: string, helpers: Joi.CustomHelpers, args): any => {
-                              const regexString = ListCountry.get(args["country"]);
-                              if (!regexString) return helpers.error("phone.internationalPhoneFormat", args["country"]);
-                              const regex = new RegExp(regexString.international);
-                              if (!regex.test(value)) return helpers.error("phone.internationalPhoneFormat", args["country"]);
+                              const regexObject = ListCountry.get(args["country"]);
+                              if (!regexObject) return helpers.error("phone.internationalPhoneFormat", args);
+                              const regex = new RegExp(regexObject.international);
+                              if (!regex.test(value)) return helpers.error("phone.internationalPhoneFormat", args);
 
                               return value;
                         },

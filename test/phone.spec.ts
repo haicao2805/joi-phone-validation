@@ -14,12 +14,28 @@ describe("JoiPhoneFormat", () => {
             }).validate(input);
 
       it("Pass a default Vietnam's phone number", () => {
-            const { error } = schemaDefault("Vietnam", { phone: "0862334006" });
+            const { error } = schemaDefault("vi", { phone: "0862334006" });
             expect(error).toBeUndefined();
       });
 
       it("Pass a default Vietnam's international phone number", () => {
-            const { error } = schemaInternational("Vietnam", { phone: "+84862334006" });
+            const { error } = schemaInternational("vi", { phone: "+84862334006" });
             expect(error).toBeUndefined();
+      });
+
+      it("Fail a default Vietnam's phone number", () => {
+            try {
+                  schemaDefault("vi", { phone: "123456789" });
+            } catch (err) {
+                  expect(err).toBeDefined();
+            }
+      });
+
+      it("Fail a default Vietnam's international phone number", () => {
+            try {
+                  schemaInternational("vi", { phone: "+8123456789" });
+            } catch (err) {
+                  expect(err).toBeDefined();
+            }
       });
 });

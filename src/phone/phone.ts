@@ -1,9 +1,10 @@
 import * as Joi from "joi";
 import { ListCountry } from "./listCountry";
+import { CountryCode } from "./countryCode";
 
 interface JoiStringExtend extends Joi.StringSchema {
-      defaultPhoneFormat(countryName: string): this;
-      internationalPhoneFormat(countryName: string): this;
+      defaultPhoneFormat(countryName: CountryCode): this;
+      internationalPhoneFormat(countryName: CountryCode): this;
 }
 
 interface JoiPhoneFormatExtend extends Joi.Root {
@@ -20,7 +21,7 @@ export const JoiPhoneFormat: JoiPhoneFormatExtend = Joi.extend((joi) => {
             },
             rules: {
                   defaultPhoneFormat: {
-                        method(country: string) {
+                        method(country: CountryCode) {
                               return this.$_addRule({
                                     name: "defaultPhoneFormat",
                                     args: { country },

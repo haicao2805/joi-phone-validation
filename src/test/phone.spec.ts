@@ -1,14 +1,15 @@
 import * as Joi from "joi";
+import { CountryCode } from "../phone/countryCode";
 import { ListCountry } from "../phone/listCountry";
 import { JoiPhoneFormat } from "../phone/phone";
 
 describe("JoiPhoneFormat", () => {
-      const schemaDefault = (country: string, input: any) =>
+      const schemaDefault = (country: CountryCode, input: any) =>
             Joi.object({
                   phone: JoiPhoneFormat.string().defaultPhoneFormat(country),
             }).validate(input);
 
-      const schemaInternational = (country: string, input: any) =>
+      const schemaInternational = (country: CountryCode, input: any) =>
             Joi.object({
                   phone: JoiPhoneFormat.string().internationalPhoneFormat(country),
             }).validate(input);

@@ -52,3 +52,31 @@ console.log(error); // undefined
 const { error } = schemaBoth("vi", { phone: "0862113113"});
 console.log(error); // undefined  
 ```
+# Custom error message
+```javascript
+const schemaDefault = (country: CountryCode, input: any) =>
+            Joi.object({
+                  phone: JoiPhoneFormat.string().defaultPhoneFormat(country).messages({
+                        "phone.defaultPhoneFormat": "custom error message"
+                  }),
+            }).validate(input);
+            
+
+
+
+const schemaInternational = (country: CountryCode, input: any) =>
+            Joi.object({
+                  phone: JoiPhoneFormat.string().internationalPhoneFormat(country).messages({
+                        "phone.internationalPhoneFormat": "custom error message"
+                  }),
+            }).validate(input);
+
+
+
+const schemaInternational = (country: CountryCode, input: any) =>
+            Joi.object({
+                  phone: JoiPhoneFormat.string().internationalPhoneFormat(country).messages({
+                        "phone.bothPhoneFormat": "custom error"
+                  }),
+            }).validate(input);
+```
